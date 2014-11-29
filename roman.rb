@@ -16,6 +16,8 @@ class Roman
     1 => "I",
   }
 
+  ROMAN_TO_INT = INT_TO_ROMAN.invert
+
   def convert n
     return int_to_roman n if n.is_a? Fixnum 
     return roman_to_int n if n.is_a? String
@@ -23,50 +25,19 @@ class Roman
 
   def roman_to_int roman_numerals
     n = 0
-
     roman_numerals.chars.each_with_index do |r, index|
-
       next2 = "#{r}#{roman_numerals[index+1]}"
-
-      if r == "D"
-        n += 500
+      ROMAN_TO_INT.each do |numeral, i|
+        if next2 == numeral && next2.length==2
+          n -= ROMAN_TO_INT[ next2[0] ]
+          break
+        elsif r == numeral
+          n += ROMAN_TO_INT[r]
+          break
+        end
       end
-
-      if next2 == "CD"
-        n -= 100
-      elsif r == "C"
-        n += 100
-      end
-
-      if r == "L"
-        n += 50
-      end
-
-      if r == "V"
-        n += 5
-      end
-
-      if next2 == "XL"
-        n -= 10
-      elsif next2 == "XC"
-        n -= 10
-      elsif r == "X"
-        n += 10
-      end
-
-
-      if next2 == "IX"
-        n -= 1
-      elsif next2 == "IV"
-        n -= 1
-      elsif r == "I"
-        n += 1
-      end
-
     end
-
     n
-
   end
 
   def int_to_roman n

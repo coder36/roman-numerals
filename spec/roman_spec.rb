@@ -14,6 +14,7 @@ describe Roman do
     Then { roman.convert( "VI" ) == 6 }
     Then { roman.convert( "IX" ) == 9 }
     Then { roman.convert( "X" ) == 10 }
+    Then { roman.convert( "XIV" ) == 14 }
     Then { roman.convert( "XX" ) == 20 }
     Then { roman.convert( "XL" ) == 40 }
     Then { roman.convert( "L" ) == 50 }
@@ -21,7 +22,9 @@ describe Roman do
     Then { roman.convert( "C" ) == 100 }
     Then { roman.convert( "CD" ) == 400 }
     Then { roman.convert( "D" ) == 500 }
-
+    Then { roman.convert( "CM" ) == 900 }
+    Then { roman.convert( "M" ) == 1000 }
+    Then { roman.convert( "MMMCMXCIX" ) == 3999}
 
   end
 
