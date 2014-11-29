@@ -19,10 +19,12 @@ describe Roman do
     Then { roman.convert( "XL" ) == 40 }
     Then { roman.convert( "L" ) == 50 }
     Then { roman.convert( "XC" ) == 90 }
+    Then { roman.convert( "XCIX" ) == 99 }
     Then { roman.convert( "C" ) == 100 }
     Then { roman.convert( "CD" ) == 400 }
     Then { roman.convert( "D" ) == 500 }
     Then { roman.convert( "CM" ) == 900 }
+    Then { roman.convert( "CMXCIX" ) == 999 }
     Then { roman.convert( "M" ) == 1000 }
     Then { roman.convert( "MMMCMXCIX" ) == 3999}
 
@@ -50,10 +52,12 @@ describe Roman do
     Then { roman.convert( 50 ) == "L" }
     Then { roman.convert( 71 ) == "LXXI" }
     Then { roman.convert( 90 ) == "XC" }
+    Then { roman.convert( 99 ) == "XCIX" }
     Then { roman.convert( 100 ) == "C" }
     Then { roman.convert( 400 ) == "CD" }
     Then { roman.convert( 500 ) == "D" }
     Then { roman.convert( 900 ) == "CM" }
+    Then { roman.convert( 999 ) == "CMXCIX" }
     Then { roman.convert( 1000 ) == "M" }
     Then { roman.convert( 3999 ) == "MMMCMXCIX" }
   end

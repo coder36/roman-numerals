@@ -25,8 +25,10 @@ class Roman
 
   def roman_to_int roman_numerals
     n = 0
+
     roman_numerals.chars.each_with_index do |r, index|
       next2 = "#{r}#{roman_numerals[index+1]}"
+
       ROMAN_TO_INT.each do |numeral, i|
         if next2 == numeral && next2.length==2
           n -= ROMAN_TO_INT[ next2[0] ]
@@ -36,6 +38,7 @@ class Roman
           break
         end
       end
+
     end
     n
   end
